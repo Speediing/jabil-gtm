@@ -335,7 +335,17 @@ button:active:not(:focus-visible),
 }
 
 .brand-jabil {
+  width: calc(var(--customer-h) * 3.7);
   height: var(--customer-h);
+  overflow: visible;
+}
+
+.brand-jabil-fallback {
+  color: var(--ink);
+  font-size: var(--customer-h);
+  font-weight: 720;
+  letter-spacing: -0.08em;
+  line-height: 1;
 }
 
 .brand-sxai {
