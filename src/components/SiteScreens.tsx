@@ -121,7 +121,7 @@ export function SiteScreen({
         />
       );
     default:
-      return <GranolaScreen account={account} />;
+      return <GranolaScreen />;
   }
 }
 
