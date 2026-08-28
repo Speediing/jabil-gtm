@@ -1,10 +1,26 @@
-# Grok Bot for Datadog GTM
+# Jabil x SpaceXAI
 
-Passworded site. Grok Bot from SpaceXAI, for Datadog GTM.
+Passworded GTM leave-behind for Jabil.
 
 ## What it is
 
-Three GTM jobs on one page. Each job has a short problem statement, an interactive Grok Bot demo, and the matching Krista Letz clips under that demo. Below that: a light index of the clips and the public Grok Bot quote wall.
+Three sample sales workflows on one page. Each workflow moves through
+scene-in-time frames, ends on the finished artifact, and includes an
+interactive agent chat with the agent computer beside it.
+
+The site keeps the approved template stack:
+
+- Next.js 15.5
+- Geist
+- vgpu and WGSL
+- `src/` application structure
+
+## Brand source
+
+The Jabil lockup loads the official SVG used by
+[Jabil Investor Relations](https://investors.jabil.com/), which links back to
+[jabil.com](https://www.jabil.com/). The exact official asset is
+`https://s27.q4cdn.com/276975351/files/design/jabil-logo-fy21.svg`.
 
 ## Run locally
 
@@ -14,7 +30,8 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Default password is `land2expand` (override with `SITE_PASSWORD`).
+Open [http://localhost:3000](http://localhost:3000). The default password is
+`land2expand`. Override it with `SITE_PASSWORD`.
 
 ## Krista clips
 
@@ -28,4 +45,5 @@ gh release download krista-gtm-clips-720p-2026-08-26 \
 
 ## Deploy
 
-Preview only under the `jasonwiker` Vercel team, project name `datadog-cro`. Set `SITE_PASSWORD=land2expand`. Do not promote to a public production domain until Jason says so.
+Deploy under the `jasonwiker` Vercel team with `SITE_PASSWORD=land2expand`.
+The production alias is `jabil-grokbot.vercel.app`.

@@ -31,21 +31,15 @@ function OutboundPack({
 
         <div className="out-phone-thread">
           <article className="out-email-card">
-            <p className="out-email-label">Draft email · 1 of 10</p>
+            <p className="out-email-label">Draft email · ready for review</p>
             <p className="out-email-subject">
-              Subject · {artifact.account}&apos;s last Sev-2
+              Subject · A question about the current workflow
             </p>
             <div className="out-email-copy">
               <p>Hi {firstName},</p>
-              <p>
-                Your status page and open Staff SRE role point to the same
-                thing: on-call still stitches APM and logs to name a Sev-2.
-              </p>
-              <p>
-                I put together the 90-second version for your platform team.
-                Worth fifteen minutes next week?
-              </p>
-              <p>Sam</p>
+              <p>{artifact.evidence[0]?.finding}</p>
+              <p>{artifact.page.body}</p>
+              <p>Jabil seller</p>
             </div>
             <footer>
               <span>Send email</span>
@@ -54,10 +48,10 @@ function OutboundPack({
           </article>
 
           <p className="out-message is-you">
-            Send the top 10 emails. They look good.
+            Keep this in drafts. I will check the source first.
           </p>
           <p className="out-message is-bot">
-            Top 10 sending. The rest stay queued.
+            Saved. Nothing has been sent.
           </p>
         </div>
 
@@ -82,7 +76,7 @@ function UpstairsMemo({
         <div>
           <p className="leave-kicker">{artifact.title}</p>
           <h3>
-            {artifact.account || "Acme"}
+            {artifact.account || "Sample account"}
             {artifact.amount ? ` · ${artifact.amount}` : ""}
           </h3>
         </div>
@@ -156,10 +150,10 @@ function BetterAnswer({
           <p className="leave-kicker">Say this</p>
           <p className="leave-win">{artifact.betterAnswer}</p>
           <p className="leave-incident" aria-hidden>
-            <span>Prometheus</span>
-            <span>Grafana</span>
-            <span>Log pile</span>
-            <b>APM + Logs</b>
+            <span>Current process</span>
+            <span>Handoff</span>
+            <span>Owner</span>
+            <b>Next step</b>
           </p>
         </section>
       </div>
