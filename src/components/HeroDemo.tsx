@@ -1,15 +1,186 @@
 "use client";
 
 import { useState } from "react";
-import { HERO_JOBS, type HeroJobId } from "@/data/hero-jobs";
+import {
+  HERO_JOBS,
+  type HeroJobIcon as HeroJobIconName,
+} from "@/data/hero-jobs";
+
+function HeroJobIcon({ kind }: { kind: HeroJobIconName }) {
+  switch (kind) {
+    case "outbound":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+          <path
+            d="m4 11.2 16-7-6.8 16-2.1-6.6L4 11.2Zm7.1 2.4L20 4"
+            stroke="currentColor"
+            strokeWidth="1.7"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "research":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+          <circle
+            cx="10.5"
+            cy="10.5"
+            r="5.5"
+            stroke="currentColor"
+            strokeWidth="1.7"
+          />
+          <path d="m15 15 4.5 4.5" stroke="currentColor" strokeWidth="1.7" />
+        </svg>
+      );
+    case "follow-up":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+          <path
+            d="M5 6.5h14v9H9l-4 3v-12Z"
+            stroke="currentColor"
+            strokeWidth="1.7"
+            strokeLinejoin="round"
+          />
+          <path d="m9 11 2 2 4-4" stroke="currentColor" strokeWidth="1.7" />
+        </svg>
+      );
+    case "deal-desk":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+          <path
+            d="M12 3.5 19 6v5.2c0 4.2-2.8 7.5-7 9.3-4.2-1.8-7-5.1-7-9.3V6l7-2.5Z"
+            stroke="currentColor"
+            strokeWidth="1.7"
+            strokeLinejoin="round"
+          />
+          <path
+            d="m8.8 11.8 2.1 2.1 4.4-4.5"
+            stroke="currentColor"
+            strokeWidth="1.7"
+          />
+        </svg>
+      );
+    case "pipeline":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+          <path
+            d="M4 18 9 13l3 3 7-8"
+            stroke="currentColor"
+            strokeWidth="1.7"
+            strokeLinejoin="round"
+          />
+          <path d="M14 8h5v5" stroke="currentColor" strokeWidth="1.7" />
+        </svg>
+      );
+    case "renewal":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+          <path
+            d="M19 8V4l-2 2a7.5 7.5 0 1 0 1.4 10.2"
+            stroke="currentColor"
+            strokeWidth="1.7"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path d="M19 4h-4" stroke="currentColor" strokeWidth="1.7" />
+        </svg>
+      );
+    case "competitive":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+          <circle
+            cx="12"
+            cy="12"
+            r="7.5"
+            stroke="currentColor"
+            strokeWidth="1.7"
+          />
+          <circle
+            cx="12"
+            cy="12"
+            r="3"
+            stroke="currentColor"
+            strokeWidth="1.7"
+          />
+          <path
+            d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"
+            stroke="currentColor"
+            strokeWidth="1.7"
+          />
+        </svg>
+      );
+    case "chief-of-staff":
+      return (
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+          <path
+            d="M12 4.5c.65 4.15 2.85 6.35 7 7-.4.07-.78.15-1.14.25-3.35.92-5.02 3.1-5.86 6.75-.84-3.65-2.51-5.83-5.86-6.75-.36-.1-.74-.18-1.14-.25 4.15-.65 6.35-2.85 7-7Z"
+            fill="currentColor"
+          />
+        </svg>
+      );
+  }
+}
+
+function BackIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="m14.5 6-6 6 6 6" stroke="currentColor" strokeWidth="1.8" />
+    </svg>
+  );
+}
+
+function DesktopIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+      <rect
+        x="4"
+        y="5"
+        width="16"
+        height="11"
+        rx="1.8"
+        stroke="currentColor"
+        strokeWidth="1.7"
+      />
+      <path d="M9 20h6M12 16v4" stroke="currentColor" strokeWidth="1.7" />
+    </svg>
+  );
+}
+
+function PlusIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="1.7" />
+    </svg>
+  );
+}
+
+function MicrophoneIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+      <rect
+        x="9"
+        y="3.5"
+        width="6"
+        height="11"
+        rx="3"
+        stroke="currentColor"
+        strokeWidth="1.6"
+      />
+      <path
+        d="M6.5 11.5a5.5 5.5 0 0 0 11 0M12 17v3M9 20h6"
+        stroke="currentColor"
+        strokeWidth="1.6"
+      />
+    </svg>
+  );
+}
 
 export function HeroDemo() {
-  const [selectedJob, setSelectedJob] = useState<HeroJobId>(HERO_JOBS[0].id);
-  const activeJob =
-    HERO_JOBS.find((job) => job.id === selectedJob) ?? HERO_JOBS[0];
+  const [selectedJob, setSelectedJob] = useState(0);
+  const activeJob = HERO_JOBS[selectedJob];
 
   return (
-    <section className="hero hero-bot-demo" aria-labelledby="hero-title">
+    <section className="hero" aria-labelledby="hero-title">
       <div className="hero-copy">
         <p className="eyebrow">A fleet of agents for every Jabil seller</p>
         <h1 id="hero-title">The work moves while your reps sell.</h1>
@@ -19,92 +190,83 @@ export function HeroDemo() {
           from a trigger, not another prompt.
         </p>
 
-        <div className="hero-phone-jobs" role="group" aria-label="Try a job">
-          {HERO_JOBS.map((job) => (
+        <div className="hero-phone-jobs" aria-label="Choose a Grok Bot job">
+          {HERO_JOBS.map((job, index) => (
             <button
-              key={job.id}
+              key={job.name}
+              className={index === selectedJob ? "is-active" : undefined}
               type="button"
-              aria-pressed={job.id === activeJob.id}
-              aria-controls="hero-phone-thread"
-              className={job.id === activeJob.id ? "is-active" : undefined}
-              onClick={() => setSelectedJob(job.id)}
+              aria-pressed={index === selectedJob}
+              onClick={() => setSelectedJob(index)}
             >
-              {job.label}
+              {index === selectedJob ? (
+                <span aria-hidden>
+                  <HeroJobIcon kind={job.icon} />
+                </span>
+              ) : null}
+              {job.name}
             </button>
           ))}
         </div>
       </div>
 
-      <aside className="hero-phone" aria-label="Interactive Grok Bot example">
-        <div className="hero-phone-statusbar" aria-hidden>
-          <span>9:41</span>
-          <span className="hero-phone-status-icons">
-            <i />
-            <b>5G</b>
-            <i className="is-battery" />
-          </span>
-        </div>
-        <div className="hero-phone-notch" aria-hidden />
-
-        <header className="hero-phone-header">
-          <span className="hero-phone-back" aria-hidden>
-            ‹
-          </span>
-          <div className="hero-phone-person">
-            <span className="hero-phone-avatar">G</span>
+      <aside className="hero-bot-demo" aria-label="Live Grok Bot phone demo">
+        <div className="hero-phone">
+          <div className="hero-phone-notch" aria-hidden />
+          <header className="hero-phone-header">
+            <span className="hero-phone-back" aria-hidden>
+              <BackIcon />
+            </span>
+            <span className="hero-phone-agent" aria-hidden>
+              <HeroJobIcon kind={activeJob.icon} />
+            </span>
             <p>
-              <strong>Grok Bot</strong>
-              <small>Ready to work</small>
+              <strong>{activeJob.name} Agent</strong>
+              <small>
+                <span aria-hidden />
+                Working in the cloud
+              </small>
             </p>
-          </div>
-          <span className="hero-phone-info" aria-hidden>
-            i
-          </span>
-        </header>
+            <span className="hero-phone-desktop" aria-hidden>
+              <DesktopIcon />
+            </span>
+          </header>
 
-        <div
-          id="hero-phone-thread"
-          className="hero-phone-thread"
-          aria-live="polite"
-        >
-          <div key={activeJob.id} className="hero-phone-thread-content">
-            <p className="hero-phone-time">Today 9:41 AM</p>
-
-            <div className="hero-phone-message is-you">
-              <p>{activeJob.request}</p>
-            </div>
-
-            <div className="hero-phone-message-row">
-              <span className="hero-phone-message-avatar" aria-hidden>
-                G
-              </span>
-              <div className="hero-phone-message is-bot">
-                <p>{activeJob.reply}</p>
-              </div>
-            </div>
-
-            <article className="hero-phone-result">
-              <p className="hero-phone-result-label">
-                {activeJob.result.label}
+          <div
+            key={activeJob.name}
+            className="hero-phone-thread"
+            aria-live="polite"
+          >
+            <article className="hero-phone-work">
+              <p className="hero-phone-work-label">
+                <span aria-hidden />
+                New signal detected
               </p>
-              <h2>{activeJob.result.title}</h2>
-              <p className="hero-phone-result-body">
-                {activeJob.result.body}
+              <p className="hero-phone-work-meta">
+                <span>Account</span>
+                {activeJob.account}
               </p>
-              <p className="hero-phone-result-status">
-                <span aria-hidden>✓</span>
-                {activeJob.result.status}
+              <p className="hero-phone-work-meta">
+                <span>Signal</span>
+                {activeJob.signal}
               </p>
+              <p className="hero-phone-work-copy">{activeJob.work}</p>
+              <strong>{activeJob.result}</strong>
             </article>
+            <p className="hero-phone-message is-user">{activeJob.user}</p>
+            <p className="hero-phone-message is-bot">{activeJob.bot}</p>
           </div>
-        </div>
 
-        <div className="hero-phone-composer" aria-hidden>
-          <span className="hero-phone-plus">+</span>
-          <p>Message</p>
-          <span className="hero-phone-mic">●</span>
+          <footer className="hero-phone-composer">
+            <span aria-hidden>
+              <PlusIcon />
+            </span>
+            <p>Message {activeJob.name} Agent</p>
+            <span aria-hidden>
+              <MicrophoneIcon />
+            </span>
+          </footer>
         </div>
-        <div className="hero-phone-home" aria-hidden />
       </aside>
     </section>
   );

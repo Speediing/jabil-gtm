@@ -1,129 +1,103 @@
+export type HeroJobIcon =
+  | "outbound"
+  | "research"
+  | "follow-up"
+  | "deal-desk"
+  | "pipeline"
+  | "renewal"
+  | "competitive"
+  | "chief-of-staff";
+
 export type HeroJob = {
-  id: string;
-  label: string;
-  request: string;
-  reply: string;
-  result: {
-    label: string;
-    title: string;
-    body: string;
-    status: string;
-  };
+  name: string;
+  icon: HeroJobIcon;
+  account: string;
+  signal: string;
+  work: string;
+  result: string;
+  user: string;
+  bot: string;
 };
 
 export const HERO_JOBS = [
   {
-    id: "account-brief",
-    label: "Research an account",
-    request:
-      "A new account is on my list. Can you help me get ready for a first conversation?",
-    reply:
-      "I am checking public company pages and recent public updates. I will keep each point tied to its source.",
-    result: {
-      label: "Sample account brief",
-      title: "A useful first question",
-      body: "Public material may point to a change in how the team handles supplier handoffs. Ask who owns the process today and what they want to improve.",
-      status: "Draft ready. Sources attached for review.",
-    },
+    name: "Sales Outbound",
+    icon: "outbound",
+    account: "Sample manufacturing account",
+    signal: "New operations program announced",
+    work: "I reviewed the public update, mapped the operations team, and drafted outreach around where Jabil may be relevant.",
+    result: "Account-specific outreach drafts ready",
+    user: "show me the drafts before anything is sent",
+    bot: "ready for review. nothing has been sent.",
   },
   {
-    id: "call-follow-up",
-    label: "Follow up after a call",
-    request:
-      "Turn these sample call notes into a short follow-up I can check before I send it.",
-    reply:
-      "I pulled out the current process, the open question, and the next meeting step. I kept anything uncertain out of the draft.",
-    result: {
-      label: "Email draft",
-      title: "Thanks for the conversation",
-      body: "Thanks for walking me through the current process. I noted one open question about ownership. For the next meeting, we can review one workflow with the right people in the room.",
-      status: "Saved as a draft. Nothing sent.",
-    },
+    name: "Account Research",
+    icon: "research",
+    account: "Sample customer account",
+    signal: "Public company update detected",
+    work: "I mapped the relevant teams, summarized the public update, and found a focused question for the first conversation.",
+    result: "Account brief and question set ready",
+    user: "brief me before the call",
+    bot: "sent. i will keep the brief current.",
   },
   {
-    id: "customer-question",
-    label: "Answer a customer question",
-    request:
-      "A customer sent a product question. Find what we can answer and show me what still needs help.",
-    reply:
-      "I checked the approved sample material. I found support for two parts and marked one part for a specialist.",
-    result: {
-      label: "Reply draft",
-      title: "Answer with a clear handoff",
-      body: "I added the two supported answers and linked their sources. I left the remaining item open so the right teammate can confirm it before you reply.",
-      status: "Needs specialist review on one item.",
-    },
+    name: "Call Follow-up",
+    icon: "follow-up",
+    account: "Sample customer call",
+    signal: "Customer call ended",
+    work: "I captured the current process, updated the working deck, and drafted the recap with open questions and next steps.",
+    result: "Deck and follow-up draft ready",
+    user: "share the drafts with me",
+    bot: "shared. they are ready for your review.",
   },
   {
-    id: "meeting-plan",
-    label: "Plan the next meeting",
-    request:
-      "Build a simple plan for the next customer meeting from the sample notes.",
-    reply:
-      "I grouped the open questions, picked a clear goal, and listed the people who may need to join.",
-    result: {
-      label: "Meeting plan",
-      title: "Confirm one workflow and its owner",
-      body: "Open with the current process, confirm who owns it, review the first workflow, and agree on who will check the next step.",
-      status: "Agenda ready for your review.",
-    },
+    name: "Deal Desk",
+    icon: "deal-desk",
+    account: "Sample opportunity",
+    signal: "Customer question received",
+    work: "I checked the approved material, drafted the supported answers, and marked the commercial question for the right teammate.",
+    result: "Supported response draft ready",
+    user: "route the open question",
+    bot: "routed. the supported answers are ready.",
   },
   {
-    id: "crm-update",
-    label: "Update the CRM",
-    request:
-      "Use these sample notes to prepare the CRM update. Do not fill in anything we did not learn.",
-    reply:
-      "I matched the notes to the account fields and left unknown details blank. I also added the source note for each update.",
-    result: {
-      label: "CRM update",
-      title: "Call notes prepared for review",
-      body: "Current process captured. Technical owner still needs confirmation. Next step is a working session. Approval path remains open.",
-      status: "Four fields ready. No changes submitted.",
-    },
+    name: "Pipeline Health",
+    icon: "pipeline",
+    account: "Sample sales pipeline",
+    signal: "Next steps need review",
+    work: "I reviewed recent activity and call notes, then identified the missing owner or next action for each open opportunity.",
+    result: "Deal review notes ready",
+    user: "brief the account owners",
+    bot: "briefs are ready. i will watch for updates.",
   },
   {
-    id: "deal-check",
-    label: "Check a deal",
-    request:
-      "Look through this sample deal and tell me what I should clear up before the next call.",
-    reply:
-      "I compared the notes, email thread, and CRM entry. The next step is present, but ownership and the review path are still unclear.",
-    result: {
-      label: "Deal check",
-      title: "Two questions to clear up",
-      body: "Who owns the technical review? Who needs to approve the next step? Ask both before setting a date.",
-      status: "Review complete. No forecast changed.",
-    },
+    name: "Renewal Risk",
+    icon: "renewal",
+    account: "Sample customer account",
+    signal: "Account activity changed",
+    work: "I compared the recent account notes with the agreed next step and prepared the questions the account team should answer.",
+    result: "Account recovery questions ready",
+    user: "share this with the account team",
+    bot: "shared. i will flag any new activity.",
   },
   {
-    id: "team-handoff",
-    label: "Prepare a team handoff",
-    request:
-      "Make a short handoff for a Jabil teammate who is joining this sample account.",
-    reply:
-      "I gathered the latest notes, open questions, and next step into one brief. I left out old material that no longer matches the thread.",
-    result: {
-      label: "Internal brief",
-      title: "What the next seller needs",
-      body: "The customer is reviewing one sample workflow. Ownership is not confirmed. The next meeting should focus on the current process and the approval path.",
-      status: "Brief ready to share internally.",
-    },
+    name: "Competitive Intel",
+    icon: "competitive",
+    account: "Sample customer account",
+    signal: "Another supplier mentioned on a call",
+    work: "I found the customer concern, checked the approved Jabil material, and drafted a comparison tied to the stated need.",
+    result: "Supplier comparison brief ready",
+    user: "add it to the next call brief",
+    bot: "added. the source material is attached.",
   },
   {
-    id: "reconnect-email",
-    label: "Restart a quiet thread",
-    request:
-      "Draft a polite note for a sample customer thread that has gone quiet.",
-    reply:
-      "I found the last agreed step and wrote a short note that gives the customer an easy way to respond.",
-    result: {
-      label: "Email draft",
-      title: "A simple way back into the thread",
-      body: "Hi, I wanted to check whether the workflow we discussed is still a priority. If it is, I can send a short plan for the next review. If timing changed, I am happy to pause.",
-      status: "Saved as a draft. Nothing sent.",
-    },
+    name: "Sales Chief of Staff",
+    icon: "chief-of-staff",
+    account: "Weekly operating review",
+    signal: "Open decisions need owners",
+    work: "I gathered pipeline changes, customer questions, and team commitments, then prepared the decisions that need attention.",
+    result: "Sales operating brief ready",
+    user: "send the draft to me first",
+    bot: "sent for review. no one else has received it.",
   },
 ] as const satisfies readonly HeroJob[];
-
-export type HeroJobId = (typeof HERO_JOBS)[number]["id"];
