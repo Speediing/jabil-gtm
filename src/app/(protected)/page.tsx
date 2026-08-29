@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { CompareTable } from "@/components/CompareTable";
+import { HeroDemo } from "@/components/HeroDemo";
 import { HeroTelemetry } from "@/components/HeroTelemetry";
 import { JobSection } from "@/components/JobSection";
 import { QuoteWall } from "@/components/QuoteWall";
@@ -10,11 +12,14 @@ export default function HomePage() {
   return (
     <main id="top">
       <div className="hero-watercolor">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           className="hero-watercolor-image"
           src="/brand/jabil-watercolor.jpg"
           alt=""
+          width={1024}
+          height={576}
+          sizes="100vw"
+          priority
         />
         <SiteNav />
       </div>
@@ -22,17 +27,7 @@ export default function HomePage() {
       <div className="report hero-paper">
         <div className="report-hero">
           <HeroTelemetry />
-          <section className="hero">
-            <div>
-              <p className="eyebrow">A fleet of agents for every Jabil seller</p>
-              <h1>The work moves while your reps sell.</h1>
-              <p className="hero-intro">
-                Grok Bot listens to calls, watches the inbox, and researches
-                accounts in the background. Each agent has its own computer.
-                The work starts from a trigger, not another prompt.
-              </p>
-            </div>
-          </section>
+          <HeroDemo />
 
           <section className="usecase-framing">
             <p className="eyebrow">Three ways Jabil sellers can start</p>
@@ -70,8 +65,13 @@ export default function HomePage() {
       </div>
 
       <div className="orbit-break" aria-hidden>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/brand/jabil-watercolor-orbit.jpg" alt="" />
+        <Image
+          src="/brand/jabil-watercolor-orbit.jpg"
+          alt=""
+          width={1024}
+          height={256}
+          sizes="100vw"
+        />
       </div>
 
       <div className="report">
